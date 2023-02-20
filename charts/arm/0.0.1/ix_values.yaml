@@ -2,7 +2,3 @@ image:
   pullPolicy: IfNotPresent
   repository: automaticrippingmachine/automatic-ripping-machine
   tag: 2.6.12
-plexpassImage:
-  pullPolicy: IfNotPresent
-  repository: automaticrippingmachine/automatic-ripping-machine
-  tag: latest
