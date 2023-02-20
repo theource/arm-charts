@@ -26,8 +26,11 @@ spec:
         command:
           - "chown"
           - "-R"
-          - "{{ .Values.ownerUID }}:{{ .Values.ownerGID }}"
+          - "{{ .Values.ownerUID }}:{{ .Values.armGID }}"
+          - "{{ .Values.appVolumeMounts.home.mountPath }}"
+          - "{{ .Values.appVolumeMounts.media.mountPath }}"
+          - "{{ .Values.appVolumeMounts.music.mountPath }}"
           - "{{ .Values.appVolumeMounts.config.mountPath }}"
-          - "{{ .Values.appVolumeMounts.downloads.mountPath }}"
+          - "{{ .Values.appVolumeMounts.logs.mountPath }}"
         volumeMounts: {{ include "common.storage.configureAppVolumeMountsInContainer" .Values | nindent 12 }}
       volumes: {{ include "common.storage.configureAppVolumes" .Values | nindent 8 }}
