@@ -9,7 +9,7 @@ home: https://github.com/automatic-ripping-machine/automatic-ripping-machine
 icon: https://github.com/automatic-ripping-machine/automatic-ripping-machine/blob/main/arm/ui/static/img/arm80.png?raw=true
 keywords:
 - automatic
-name: armripper
+name: arm ripper
 sources:
 - https://github.com/automatic-ripping-machine/automatic-ripping-machine
 version: 0.0.1
