@@ -63,7 +63,7 @@ questions:
     description: "The id of the 'arm' user on the host machine. saves having permission errors"
     schema:
       type: int
-      default: ""
+      default: 1000
 
   - variable: ARM_GID
     label: "ARM host group id"
@@ -71,7 +71,7 @@ questions:
     description: "The id of the 'arm' group on the host machine. saves having permission errors"
     schema:
       type: int
-      default: ""
+      default: 1000
 
   - variable: hostNetwork
     label: "Configure Host Network"
