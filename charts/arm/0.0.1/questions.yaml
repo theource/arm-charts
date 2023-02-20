@@ -29,7 +29,6 @@ portals:
     path: "/"
 
 questions:
-
   - variable: dnsConfig
     label: "DNS Configuration"
     group: "Advanced DNS Settings"
@@ -71,7 +70,7 @@ questions:
     description: "The id of the arm group on the host machine. saves having permission errors"
     schema:
       type: string
-      default: 1000
+      default: "1000"
 
   - variable: hostNetwork
     label: "Configure Host Network"
