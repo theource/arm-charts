@@ -9,8 +9,8 @@ image:
   tag: 2.6.12
   pullPolicy: IfNotPresent
 
-ARM_UID: 1000
-ARM_GID: 1000
+armUID: "1000"
+armGID: "1000"
 
 # Set the timezone of the plex server
 timezone: "Etc/UTC"
@@ -50,9 +50,6 @@ timezone: "Etc/UTC"
 
 # upgrade strategy type (e.g. Recreate or RollingUpdate)
 updateStrategy: Recreate
-
-armServiceTCP:
-  port: 8080
 
 hostNetwork: false
 
