@@ -58,21 +58,21 @@ questions:
                         required: true
 
   - variable: armUID
-    label: "ARM host id"
+    label: "ARM Host ID"
     group: "ARM Configuration"
-    description: "The id of the 'arm' user on the host machine. saves having permission errors"
+    description: "The id of the arm user on the host machine. saves having permission errors"
     schema:
       type: int
-      default: 1000
+      default: 20909
       min: 1
       max: 65535
   - variable: armGID
     label: "ARM host group id"
     group: "ARM Configuration"
-    description: "The id of the 'arm' group on the host machine. saves having permission errors"
+    description: "The id of the arm group on the host machine. saves having permission errors"
     schema:
       type: int
-      default: 1000
+      default: 20909
       min: 1
       max: 65535
   - variable: hostNetwork
