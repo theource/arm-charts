@@ -62,19 +62,17 @@ questions:
     group: "ARM Configuration"
     description: "The id of the arm user on the host machine. saves having permission errors"
     schema:
-      type: int
-      default: 20909
-      min: 1
-      max: 65535
+      type: string
+      default: "1000"
+
   - variable: armGID
     label: "ARM host group id"
     group: "ARM Configuration"
     description: "The id of the arm group on the host machine. saves having permission errors"
     schema:
-      type: int
-      default: 20909
-      min: 1
-      max: 65535
+      type: string
+      default: 1000
+
   - variable: hostNetwork
     label: "Configure Host Network"
     group: "Networking"
@@ -125,21 +123,6 @@ questions:
           description: "Create new pods and then kill old ones"
         - value: "Recreate"
           description: "Kill existing pods before creating new ones"
-
-  # Port configuration
-  - variable: arm ServiceTCP
-    label: "Configure ARM ui Service"
-    group: "Networking"
-    schema:
-      type: dict
-      attrs:
-        - variable: port
-          label: "Port to expose for ARM UI"
-          schema:
-            type: int
-            min: 9000
-            max: 65535
-            default: 8080
 
   # Specify GPU configuration
   - variable: gpuConfiguration
@@ -342,7 +325,6 @@ questions:
                         required: true
                         $ref:
                           - "validations/lockedHostPath"
-
 
   - variable: extraAppVolumeMounts
     label: "ARM Extra Host Path Volumes"
