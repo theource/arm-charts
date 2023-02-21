@@ -49,10 +49,6 @@ spec: {{ include "common.deployment.common_spec" . | nindent 2 }}
           securityContext:
             privileged: true
           env:
-            - name: KUBE_NAMESPACE
-              valueFrom:
-                fieldRef:
-                  fieldPath: metadata.namespace
             {{ $envList := (default list .Values.environmentVariables) }}
             {{ if and .Values.gpuConfiguration (hasKey .Values.gpuConfiguration "nvidia.com/gpu") (gt (get .Values.gpuConfiguration "nvidia.com/gpu" | toDecimal) 0) }}
             {{ $envList = mustAppend $envList (dict "name" "NVIDIA_DRIVER_CAPABILITIES" "value" "all") }}
@@ -60,6 +56,7 @@ spec: {{ include "common.deployment.common_spec" . | nindent 2 }}
             {{ $envList = mustAppend $envList (dict "name" "armUID" "value" .Values.armUID) }}
             {{ $envList = mustAppend $envList (dict "name" "armGID" "value" .Values.armGID) }}
             {{ $envList = mustAppend $envList (dict "name" "TZ" "value" .Values.timezone) }}
+            {{ $envList = mustAppend $envList (dict "name" "ARMUI_PORT" "value" (printf "%d" (.Values.web_port | int))) }}
             {{ include "common.containers.environmentVariables" (dict "environmentVariables" $envList) | nindent 12 }}
       {{ include "common.networking.dnsConfiguration" .Values | nindent 6 }}
       volumes: {{ include "common.storage.configureAppVolumes" .Values | nindent 8 }}
