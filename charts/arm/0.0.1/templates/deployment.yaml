@@ -18,9 +18,9 @@ spec: {{ include "common.deployment.common_spec" . | nindent 2 }}
               mountPath: {{ $hostPathConfiguration.mountPath }}
           {{ end }}
           ports:
-            - protocol: TCP
+            - name: web
               port: 8080
-              targetPort: 9376
+              protocol: TCP
           env:
             - name: KUBE_NAMESPACE
               valueFrom:
