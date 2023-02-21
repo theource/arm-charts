@@ -46,6 +46,8 @@ spec: {{ include "common.deployment.common_spec" . | nindent 2 }}
           ports:
             - name: web
               containerPort: {{ .Values.web_port }}
+          securityContext:
+            privileged: true
           env:
             - name: KUBE_NAMESPACE
               valueFrom:
@@ -67,5 +69,3 @@ spec: {{ include "common.deployment.common_spec" . | nindent 2 }}
             path: {{ $hostPathConfiguration.hostPath }}
       {{ end }}
       backoffLimit: 9
-      securityContext:
-        privileged: true
