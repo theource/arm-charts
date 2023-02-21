@@ -28,7 +28,7 @@ image:
   pullPolicy: IfNotPresent
   repository: automaticrippingmachine/automatic-ripping-machine
   tag: latest
-armServiceTCP:
+web_port:
   port: 8080
 timezone: Etc/UTC
 armUID: 1000
