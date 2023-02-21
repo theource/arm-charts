@@ -1,5 +1,5 @@
 apiVersion: v2
-appVersion: 1.0.1
+appVersion: 0.0.1
 dependencies:
 - name: common
   repository: file://../../../library/common/2207.0.0
@@ -9,5 +9,9 @@ home: https://github.com/automatic-ripping-machine/automatic-ripping-machine
 icon: https://github.com/automatic-ripping-machine/automatic-ripping-machine/blob/main/arm/ui/static/img/arm80.png?raw=true
 keywords:
 - automatic
+- dvd
+- ripper
+- bluray
 name: ripper
-version: 0.0.1_2.6.12
+upstream_version: 2.6.12
+version: 0.0.1
