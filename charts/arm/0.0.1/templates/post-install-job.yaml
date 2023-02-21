@@ -1,19 +1,19 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: "{{ template "common.names.fullname" . }}-preinstall-job"
+  name: "{{ template "common.names.fullname" . }}-postinstall-job"
   labels:
     app.kubernetes.io/managed-by: {{ .Release.Service | quote }}
     app.kubernetes.io/instance: {{ .Release.Name | quote }}
     app.kubernetes.io/version: {{ .Chart.AppVersion }}
     helm.sh/chart: {{ template "common.names.chart" . }}
   annotations:
-    "helm.sh/hook": pre-install
+    "helm.sh/hook": post-install
     "helm.sh/hook-delete-policy": hook-succeeded
 spec:
   template:
     metadata:
-      name: "{{ template "common.names.fullname" . }}-preinstall-hook"
+      name: "{{ template "common.names.fullname" . }}-postinstall-hook"
       labels:
         app.kubernetes.io/managed-by: {{ .Release.Service | quote }}
         app.kubernetes.io/instance: {{ .Release.Name | quote }}
@@ -21,7 +21,7 @@ spec:
     spec:
       restartPolicy: Never
       containers:
-      - name: pre-install-job
+      - name: post-install-job
         image: "alpine:latest"
         command:
           - "chmod"
