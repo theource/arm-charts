@@ -19,8 +19,8 @@ spec: {{ include "common.deployment.common_spec" . | nindent 2 }}
           {{ end }}
           ports:
             - name: web
-              containerPort: 8080
-              targetPort: 9376
+              containerPort: {{ .Values.web_port }}
+              port: 8080
               protocol: TCP
           env:
             - name: KUBE_NAMESPACE
