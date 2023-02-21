@@ -21,9 +21,6 @@ spec: {{ include "common.deployment.common_spec" . | nindent 2 }}
           - name: arm-rippers
             protocol: TCP
             containerPort: 8080
-          {{- if .Values.hostNetwork }}
-            hostPort: {{ .Values.plexServiceTCP.port }}
-          {{- end }}
           env:
             - name: KUBE_NAMESPACE
               valueFrom:
