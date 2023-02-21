@@ -24,7 +24,7 @@ spec:
       - name: pre-install-job
         image: "alpine:latest"
         command: 
-          - /bin/sh",
+          - /bin/sh
           - -c
           - sed
           - -E 
