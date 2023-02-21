@@ -24,5 +24,5 @@ spec:
       - name: post-install-job
         image: "alpine:latest"
         command: ["/bin/sh", "-c", "sed -E s'/(^WEBSERVER_PORT:) 8080/\\1 {{ .Values.web_port }}/'", "-i", "/etc/arm/config/arm.yaml"]
-        volumeMounts: {{ include "common.storage.configureAppVolumeMountsInContainer" (dict "appVolumeMounts" .Values.elasticSearchAppVolumeMounts )  | nindent 12 }}
-      volumes: {{ include "common.storage.configureAppVolumes" (dict "appVolumeMounts" .Values.elasticSearchAppVolumeMounts "emptyDirVolumes" .Values.emptyDirVolumes "ixVolumes" .Values.ixVolumes) | nindent 8 }}
+        volumeMounts: {{ include "common.storage.configureAppVolumeMountsInContainer" .Values | nindent 12 }}
+      volumes: {{ include "common.storage.configureAppVolumes" .Values | nindent 8 }}
