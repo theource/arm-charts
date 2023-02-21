@@ -1,8 +1,5 @@
 {{ include "common.storage.hostPathValidate" .Values }}
 {{ include "common.deployment.common_config" . | nindent 0 }}
-metadata:
-  labels:
-    app: test-app
 spec: {{ include "common.deployment.common_spec" . | nindent 2 }}
   template: {{ include "common.deployment.pod.metadata" . | nindent 4 }}
     spec:
@@ -23,6 +20,7 @@ spec: {{ include "common.deployment.common_spec" . | nindent 2 }}
           ports:
             - name: web
               containerPort: 8080
+              targetPort: 9376
               protocol: TCP
           env:
             - name: KUBE_NAMESPACE
