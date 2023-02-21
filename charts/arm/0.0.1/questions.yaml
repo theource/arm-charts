@@ -34,9 +34,9 @@ questions:
     group: Networking
     schema:
       type: int
-      min: 8000
+      min: 9000
       max: 65535
-      default: 20810
+      default: 9090
       required: true
   - variable: dnsConfig
     label: "DNS Configuration"
