@@ -12,7 +12,7 @@ image:
 armUID: "1000"
 armGID: "1000"
 
-# Set the timezone of the plex server
+# Set the timezone of the arm server
 timezone: "Etc/UTC"
 
 # upgrade strategy type (e.g. Recreate or RollingUpdate)
