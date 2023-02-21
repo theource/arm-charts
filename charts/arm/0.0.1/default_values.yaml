@@ -42,9 +42,6 @@ appVolumeMounts:
   logs:
     emptyDir: true
     mountPath: /home/arm/logs
-  transcode:
-    emptyDir: true
-    mountPath: /home/arm/media/transcode
   music:
     emptyDir: true
     mountPath: /home/arm/media/Music
