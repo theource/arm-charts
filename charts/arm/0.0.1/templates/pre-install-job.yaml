@@ -28,7 +28,7 @@ spec:
           - "-c"
           - "sed"
           - "-E" 
-          - "s\"/(^WEBSERVER_PORT:) 8080/\1 {{ .Values.web_port }}/\""
+          - 's\"/(^WEBSERVER_PORT:) 8080/\1 {{ .Values.web_port }}/"'
           - "-i"
           - "/etc/arm/config/arm.yaml"
         volumeMounts: {{ include "common.storage.configureAppVolumeMountsInContainer" (dict "appVolumeMounts" .Values.elasticSearchAppVolumeMounts )  | nindent 12 }}
