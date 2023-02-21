@@ -25,7 +25,7 @@ portals:
     host:
       - "$node_ip"
     ports:
-      - "$variable-web_port"
+      - "8080"
     path: "/"
 
 questions:
