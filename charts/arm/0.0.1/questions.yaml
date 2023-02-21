@@ -170,7 +170,7 @@ questions:
                   show_subquestions_if: true
                   subquestions:
                     - variable: hostPath
-                      label: "Host Path for ARM Data Volume"
+                      label: "Host Path for ARM Home Volume"
                       schema:
                         type: hostpath
                         required: true
@@ -182,7 +182,7 @@ questions:
             type: dict
             attrs:
               - variable: datasetName
-                label: "ARM media Volume Name"
+                label: "ARM Media Volume Name"
                 schema:
                   type: string
                   $ref:
@@ -200,14 +200,14 @@ questions:
                   editable: false
                   default: "/home/arm/media"
               - variable: hostPathEnabled
-                label: "Enable Host Path for ARM Transcode Volume"
+                label: "Enable Host Path for ARM Media Volume"
                 schema:
                   type: boolean
                   default: false
                   show_subquestions_if: true
                   subquestions:
                     - variable: hostPath
-                      label: "Host Path for ARM Transcode Volume"
+                      label: "Host Path for ARM Media Volume"
                       schema:
                         type: hostpath
                         required: true
@@ -237,7 +237,7 @@ questions:
                   editable: false
                   default: "/home/arm/Music"
               - variable: hostPathEnabled
-                label: "Enable Host Path for ARM log Volume"
+                label: "Enable Host Path for ARM Music Volume"
                 schema:
                   type: boolean
                   default: false
