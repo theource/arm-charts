@@ -1,5 +1,5 @@
 apiVersion: v2
-name: arm-ripper
+name: arm
 appVersion: 0.0.1
 description: Automatic ripping machine scripts
 home: https://github.com/automatic-ripping-machine/automatic-ripping-machine
