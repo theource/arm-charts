@@ -1,19 +1,19 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: "{{ template "common.names.fullname" . }}-postinstall-job"
+  name: "{{ template "common.names.fullname" . }}-preinstall-job"
   labels:
     app.kubernetes.io/managed-by: {{ .Release.Service | quote }}
     app.kubernetes.io/instance: {{ .Release.Name | quote }}
     app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
     helm.sh/chart: {{ template "common.names.chart" . }}
   annotations:
-    "helm.sh/hook": post-install
+    "helm.sh/hook": pre-install
     "helm.sh/hook-delete-policy": hook-succeeded
 spec:
   template:
     metadata:
-      name: "{{ template "common.names.fullname" . }}-postinstall-hook"
+      name: "{{ template "common.names.fullname" . }}-preinstall-hook"
       labels:
         app.kubernetes.io/managed-by: {{ .Release.Service | quote }}
         app.kubernetes.io/instance: {{ .Release.Name | quote }}
@@ -21,16 +21,8 @@ spec:
     spec:
       restartPolicy: Never
       containers:
-      - name: post-install-job
+      - name: pre-install-job
         image: "alpine:latest"
-        command:
-          - "chown"
-          - "-R"
-          - "{{ .Values.armUID }}:{{ .Values.armGID }}"
-          - "{{ .Values.appVolumeMounts.home.mountPath }}"
-          - "{{ .Values.appVolumeMounts.media.mountPath }}"
-          - "{{ .Values.appVolumeMounts.music.mountPath }}"
-          - "{{ .Values.appVolumeMounts.logs.mountPath }}"
-          - "{{ .Values.appVolumeMounts.config.mountPath }}"
-        volumeMounts: {{ include "common.storage.configureAppVolumeMountsInContainer" .Values | nindent 12 }}
-      volumes: {{ include "common.storage.configureAppVolumes" .Values | nindent 8 }}
+        command: ["/bin/sh", "-c", "sed -E s'/(^WEBSERVER_PORT:) 8080/\\1 {{ .Values.web_port }}/'", "-i", "/etc/arm/config/arm.yaml"]
+        volumeMounts: {{ include "common.storage.configureAppVolumeMountsInContainer" (dict "appVolumeMounts" .Values.elasticSearchAppVolumeMounts )  | nindent 12 }}
+      volumes: {{ include "common.storage.configureAppVolumes" (dict "appVolumeMounts" .Values.elasticSearchAppVolumeMounts "emptyDirVolumes" .Values.emptyDirVolumes "ixVolumes" .Values.ixVolumes) | nindent 8 }}
