@@ -13,7 +13,7 @@
             "latest_version": "0.0.1",
             "latest_app_version": "2.6.12",
             "latest_human_version": "0.0.1_2.6.12",
-            "name": "arm-rippers",
+            "name": "arm",
             "title": "Automaticrippingmachine",
             "icon_url": "https://github.com/automatic-ripping-machine/automatic-ripping-machine/blob/main/arm/ui/static/img/arm80.png?raw=true"
         }
