@@ -9,8 +9,6 @@ spec: {{ include "common.deployment.common_spec" . | nindent 2 }}
     {{- end }}
       hostname: {{ template "common.names.fullname" . }}
       containers:
-        - securityContext:
-            privileged: true
         - name: {{ .Chart.Name }}
           {{ include "common.resources.limitation" . | nindent 10 }}
           {{ include "common.containers.imageConfig" .Values.image | nindent 10 }}
@@ -37,6 +35,8 @@ spec: {{ include "common.deployment.common_spec" . | nindent 2 }}
             {{ $envList = mustAppend $envList (dict "name" "TZ" "value" .Values.timezone) }}
             {{ include "common.containers.environmentVariables" (dict "environmentVariables" $envList) | nindent 12 }}
       {{ include "common.networking.dnsConfiguration" .Values | nindent 6 }}
+        - securityContext:
+          privileged: true
       volumes: {{ include "common.storage.configureAppVolumes" .Values | nindent 8 }}
       {{ range $index, $hostPathConfiguration := .Values.extraAppVolumeMounts }}
         - name: extrappvolume-{{ $index }}
