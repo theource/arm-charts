@@ -21,7 +21,7 @@ updateStrategy: Recreate
 hostNetwork: false
 
 proxy:
-  # This allows to set a proxy environment variable, which PMS uses to fetch the token and assets like movie cover
+  # This allows to set a proxy environment variable
   enabled: false
   # http: "http://proxy:8080"
   # https: "https://proxy:8080"
