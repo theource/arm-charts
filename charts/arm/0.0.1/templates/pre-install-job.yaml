@@ -24,6 +24,14 @@ spec:
       - name: pre-install-job
         image: "alpine:latest"
         command:
+          - "mkdir"
+          - "-p"
+          - "&&"
+          - "{{ .Values.appVolumeMounts.home.mountPath }}"
+          - "{{ .Values.appVolumeMounts.media.mountPath }}"
+          - "{{ .Values.appVolumeMounts.music.mountPath }}"
+          - "{{ .Values.appVolumeMounts.config.mountPath }}"
+          - "{{ .Values.appVolumeMounts.logs.mountPath }}"
           - "chown"
           - "-R"
           - "{{ .Values.ownerUID }}:{{ .Values.armGID }}"
