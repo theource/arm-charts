@@ -34,3 +34,4 @@ spec:
           - "{{ .Values.appVolumeMounts.config.mountPath }}"
         volumeMounts: {{ include "common.storage.configureAppVolumeMountsInContainer" .Values | nindent 12 }}
       volumes: {{ include "common.storage.configureAppVolumes" .Values | nindent 8 }}
+      backoffLimit: 9
