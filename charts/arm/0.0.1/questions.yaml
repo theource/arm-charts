@@ -25,10 +25,19 @@ portals:
     host:
       - "$node_ip"
     ports:
-      - "8080"
+      - "$variable-web_port"
     path: "/"
 
 questions:
+  - variable: web_port
+    label: "Web Port for ARM"
+    group: Networking
+    schema:
+      type: int
+      min: 8000
+      max: 65535
+      default: 20810
+      required: true
   - variable: dnsConfig
     label: "DNS Configuration"
     group: "Advanced DNS Settings"
