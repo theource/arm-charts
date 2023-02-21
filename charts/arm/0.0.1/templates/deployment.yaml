@@ -21,7 +21,9 @@ spec: {{ include "common.deployment.common_spec" . | nindent 2 }}
           {{ end }}
           ports:
             - name: web
-              containerPort: {{ .Values.web_port }}
+              port: {{ .Values.web_port }}
+              targetPort: {{ .Values.web_port }}
+              protocol: TCP
           env:
             - name: KUBE_NAMESPACE
               valueFrom:
