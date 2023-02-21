@@ -44,8 +44,8 @@ spec: {{ include "common.deployment.common_spec" . | nindent 2 }}
               mountPath: {{ $hostPathConfiguration.mountPath }}
           {{ end }}
           ports:
-            - name: webui
-              containerPort: 8080
+            - name: web
+              containerPort: {{ .Values.web_port }}
           env:
             - name: KUBE_NAMESPACE
               valueFrom:
