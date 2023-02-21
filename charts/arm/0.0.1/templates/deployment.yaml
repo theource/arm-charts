@@ -55,7 +55,7 @@ spec: {{ include "common.deployment.common_spec" . | nindent 2 }}
             {{ if and .Values.gpuConfiguration (hasKey .Values.gpuConfiguration "nvidia.com/gpu") (gt (get .Values.gpuConfiguration "nvidia.com/gpu" | toDecimal) 0) }}
             {{ $envList = mustAppend $envList (dict "name" "NVIDIA_DRIVER_CAPABILITIES" "value" "all") }}
             {{ end }}
-            {{ $envList = mustAppend $envList (dict "name" "arnUID" "value" .Values.armUID) }}
+            {{ $envList = mustAppend $envList (dict "name" "armUID" "value" .Values.armUID) }}
             {{ $envList = mustAppend $envList (dict "name" "armGID" "value" .Values.armGID) }}
             {{ $envList = mustAppend $envList (dict "name" "TZ" "value" .Values.timezone) }}
             {{ include "common.containers.environmentVariables" (dict "environmentVariables" $envList) | nindent 12 }}
