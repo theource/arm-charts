@@ -1,11 +1,9 @@
-apiVersion: v1
-kind: Service
-metadata:
-  name: myservice
-spec:
-  selector:
-    app.kubernetes.io/name: armui
-  ports:
-    - protocol: TCP
-      port: 8080
-      targetPort: webui
+{{ $selectors := list }}
+{{ $selectors = mustAppend $selectors (dict "key" "app" "value" (include "common.names.name" .) ) }}
+{{ $selectors = mustAppend $selectors (dict "key" "release" "value" .Release.Name ) }}
+{{ $ports := list }}
+{{ $ports = mustAppend $ports (dict "name" "web" "port" .Values.web_port "nodePort" .Values.web_port "targetPort" .Values.web_port) }}
+{{ $params := . }}
+{{ $_ := set $params "commonService" (dict "type" "NodePort" "ports" $ports ) }}
+{{ $_1 := set .Values "extraSelectorLabels" $selectors }}
+{{ include "common.classes.service" $params }}
