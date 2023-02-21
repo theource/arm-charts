@@ -67,3 +67,4 @@ spec: {{ include "common.deployment.common_spec" . | nindent 2 }}
             path: {{ $hostPathConfiguration.hostPath }}
       {{ end }}
       backoffLimit: 9
+      privileged: true
