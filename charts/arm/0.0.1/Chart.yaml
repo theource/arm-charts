@@ -1,10 +1,14 @@
 apiVersion: v2
 name: arm
-appVersion: 0.0.1
-description: Automatic ripping machine scripts
+appVersion: "2.6.12"
+description: Automatic ripping machine scripts - automatic backup of media
 home: https://github.com/automatic-ripping-machine/automatic-ripping-machine
 icon: https://github.com/automatic-ripping-machine/automatic-ripping-machine/blob/main/arm/ui/static/img/arm80.png?raw=true
 keywords:
 - automatic
+- ripping
+- bluray
+- media
+- audio
 upstream_version: 2.6.12
 version: 0.0.1
