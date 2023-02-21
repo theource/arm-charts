@@ -26,14 +26,8 @@ spec:
         release: {{ .Release.Name }}
         {{- include "common.labels.selectorLabels" . | nindent 8 }}
       annotations: {{ include "common.annotations" . | nindent 8 }}
-spec: {{ include "common.deployment.common_spec" . | nindent 2 }}
-  template: {{ include "common.deployment.pod.metadata" . | nindent 4 }}
     spec:
-    {{- if .Values.hostNetwork }}
-      hostNetwork: {{ .Values.hostNetwork }}
-      dnsPolicy: ClusterFirstWithHostNet
-    {{- end }}
-      hostname: {{ template "common.names.fullname" . }}
+      hostNetwork: false
       containers:
         - name: {{ .Chart.Name }}
           {{ include "common.resources.limitation" . | nindent 10 }}
