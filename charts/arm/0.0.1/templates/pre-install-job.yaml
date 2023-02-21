@@ -24,8 +24,9 @@ spec:
       - name: pre-install-job
         image: "alpine:latest"
         command:
-          - "mkdir"
-          - "-p"
+          - "chmod"
+          - "-R"
+          - "{{ .Values.armUID }}:{{ .Values.armGID }}"
           - "{{ .Values.appVolumeMounts.home.mountPath }}"
           - "{{ .Values.appVolumeMounts.media.mountPath }}"
           - "{{ .Values.appVolumeMounts.music.mountPath }}"
